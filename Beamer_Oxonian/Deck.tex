@@ -1,0 +1,114 @@
+% Copyright 2019 Clara Eleonore Pavillet
+
+% Author: Clara Eleonore Pavillet
+% Description: This is an unofficial Oxford University Beamer Template I made from scratch. Feel free to use it, modify it, share it.
+% Version: 1.0
+
+\documentclass{beamer}
+\input{Theme/Packages.tex}
+\usetheme{oxonian}
+
+\title{Mathematical and Computational Modelling}
+\titlegraphic{\includegraphics[width=2cm]{Theme/Logos/OxfordLogoV1.png}}
+\author{Clara El{\'e}onore Pavillet}
+\institute{University of Oxford}
+\date{} %\today
+
+\begin{document}
+
+{\setbeamertemplate{footline}{} 
+\frame{\titlepage}}
+
+\section*{Outline}\begin{frame}{Outline}\tableofcontents\end{frame}
+
+\section{Text}
+    \begin{frame}[plain]
+        \vfill
+      \centering
+      \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+        \usebeamerfont{title}\insertsectionhead\par%
+        \color{oxfordblue}\noindent\rule{10cm}{1pt} \\
+        \LARGE{\faFileTextO}
+      \end{beamercolorbox}
+      \vfill
+  \end{frame}
+
+
+\subsection{Welcome}
+\begin{frame}{Welcome}
+Feel free to contact me if you have any suggestions! \href{https://github.com/CEPav}{\faGithub}
+
+\begin{enumerate}
+    \item Simple
+    \item Clean
+    \item Oxford University Colours
+\end{enumerate}
+\vspace{1cm}
+\begin{center}
+    Enjoy! \faSmileO
+\end{center}
+\end{frame}
+
+
+\section{Equations}
+    \begin{frame}[plain]
+        \vfill
+      \centering
+      \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+        \usebeamerfont{title}\insertsectionhead\par%
+        \color{oxfordblue}\noindent\rule{10cm}{1pt} \\
+        \LARGE{\faFileTextO}
+      \end{beamercolorbox}
+      \vfill
+  \end{frame}
+  
+\subsection{Example}
+\begin{frame}{Example}
+\only<1>{
+Let \(p(x)=\mathcal{N}(\mu\textsubscript{1},\,\sigma^{2}\textsubscript{1})\) and \(q(x)=\mathcal{N}(\mu\textsubscript{2},\,\sigma^{2}\textsubscript{2})\): \\
+\begin{equation}
+\mathcal{N}=\frac{1}{\sigma\,\sqrt{2\,\pi}}\,\E^{-\frac{\left(x-\mu\right)^2}{2\,\sigma^2} }
+\end{equation}}
+\only<2>{
+Kullback-Leibler divergence for continuous probabilities:
+\begin{align*}
+	D(p,q)=&\int p(x) \log \frac{p(x)}{q(x)}\ud x\\
+    =& \int p(x) \,\ln p(x) \ud x -\int p(x) \,\ln q(x) \ud x\\
+	=&\,\frac{1}{2} \ln\left(2\,\pi\,\sigma_2^{2}\right) +\frac{\sigma_1^{2}+\left(\mu_1-\mu_2 \right)^2 }{2\,\sigma_2^2}-\frac{1}{2}\left( 1+\ln 2\,\pi\,\sigma_1^2\right) \\
+	=&\,\ln\frac{\sigma_2}{\sigma_1} +\frac{\sigma_1^{2}+\left(\mu_1-\mu_2 \right)^2 }{2\,\sigma_2^2}-\frac{1}{2}
+\end{align*}
+}
+\end{frame}
+
+\section{Code}
+    \begin{frame}[plain]
+        \vfill
+      \centering
+      \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+        \usebeamerfont{title}\insertsectionhead\par%
+        \color{oxfordblue}\noindent\rule{10cm}{1pt} \\
+        \LARGE{\faFileCodeO}
+      \end{beamercolorbox}
+      \vfill
+  \end{frame}
+  
+\subsection{Example}
+\begin{frame}[fragile]{Example}
+\begin{block}{Greatest Common Divisor}
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=10pt] 
+def greatest_c_remainder(a,b):
+	'''Greatest common divisor of a and b'''
+	r = a % b
+	if r == 0:
+		return b
+	else:
+		m = b
+		n = r
+	return greatest_c_remainder(m,n)
+
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\end{document}
+
