@@ -1,0 +1,244 @@
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{tipa} % for the \ark{} command
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{times} % assumes new font selection scheme installed
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amscd}% for commutative diagrams
+\usepackage{mathrsfs} %this package is for the script font \mathscr
+\usepackage{relsize}
+\usepackage{delarray}
+\usepackage{pstricks}
+\usepackage{theorem}
+\usepackage{changepage}
+\usepackage{euscript}
+\usepackage{textcomp}
+\usepackage{esvect}
+\usepackage{parskip}
+\usepackage{placeins}
+\usepackage{subfigure}
+% \usepackage{subcaption}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{stmaryrd}
+\usepackage{fancyhdr}
+\usepackage{graphpap}
+\usepackage{makeidx}
+\usepackage{enumerate}
+\usepackage{esint}
+\usepackage{datetime}
+\usepackage{caption}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+%Set Abstract Page
+\usepackage{abstract}
+\setlength{\absleftindent}{-5mm}
+\setlength{\absrightindent}{-5mm}
+
+%Colour definitions - put before TikZ
+\usepackage{color}
+\definecolor{igreen}{rgb}{0.0, 0.56, 0.0}
+\usepackage{xcolor, colortbl}
+\colorlet{gred}{-red!75!green!65!}
+\colorlet{mamber}{-red!75!green!15!blue!50!}
+\colorlet{grown}{-red!75!blue!20!green}
+\colorlet{bled}{-red!85!blue!40!green!45!}
+\colorlet{waters}{cyan!25} % Define color for the water
+\colorlet{water}{cyan!25!green!20!} % Define color for the water
+\definecolor{grin}{HTML}{00F9DE}
+\usepackage{rotating}
+\providecommand{\keywords}[1]{\textbf{\textit{Keywords---}} #1}
+
+% For faint dotted table line
+\usepackage{arydshln}
+\setlength{\dashlinedash}{.4pt}
+\setlength{\dashlinegap}{.8pt}
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{
+arrows,
+arrows.meta,
+automata,
+backgrounds,
+calc,
+decorations,
+decorations.pathmorphing,
+decorations.pathreplacing,
+decorations.fractals,
+external,
+fit,
+matrix,
+petri,
+positioning,
+shadows,
+shapes,
+shapes.multipart,
+topaths,
+intersections
+}
+\usepackage{eso-pic}
+\def\ba{\begin{array}}
+\def\ea{\end{array}}
+\def\beann{\begin{eqnarray*}}
+\def\eeann{\end{eqnarray*}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\bsy{\boldsymbol}
+\def\gray#1{{\color{gray}#1}}
+
+%% COUNTERS
+\setcounter{MaxMatrixCols}{20}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesection}{\thechapter.\number\numexpr\value{section}}
+\renewcommand{\thesubsection}{\thesection.\number\numexpr\value{subsection}}
+%%For changemargin
+\def\quote{\list{}{\rightmargin\leftmargin}\item[]}
+\let\endquote=\endlist 
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\makeatletter
+\newlength\qvec@height
+\newlength\qvec@depth
+\newlength\qvec@width
+\newcommand{\qvec}[2][]{
+    \settoheight{\qvec@height}{$#2$}
+    \settodepth{\qvec@depth}{$#2$}
+    \settowidth{\qvec@width}{$#2$}
+  \def\qvec@arg{#1}
+  \raisebox{.2ex}{\raisebox{\qvec@height}{\rlap{% 
+    \kern.05em
+    \begin{tikzpicture}[scale=1,shorten >=-3pt,shorten <=-3pt]
+    \pgfsetroundcap
+    \coordinate (Stx) at (.05em,0) ;
+		\coordinate (Arx) at (\qvec@width-.05em,0) ;
+    \draw[->](Stx) to[bend left] (Arx);
+    \end{tikzpicture}
+  }}}
+  #2
+}
+\makeatother
+\makeatletter
+\newlength\pvec@height
+\newlength\pvec@depth
+\newlength\pvec@width
+\newcommand{\pvec}[2][]{
+    \settoheight{\pvec@height}{$#2$}
+    \settodepth{\pvec@depth}{$#2$}
+    \settowidth{\pvec@width}{$#2$}
+  \def\pvec@arg{#1}
+  \raisebox{.2ex}{\raisebox{\pvec@height}{\rlap{% 
+    \kern.05em
+    \begin{tikzpicture}[scale=1,shorten >=-3pt,shorten <=-3pt]
+    \pgfsetroundcap
+    \coordinate (Stx) at (.05em,0) ;
+		\coordinate (Arx) at (\pvec@width-.05em,0) ;
+    \draw[->](Stx) to[bend right] (Arx);
+    \end{tikzpicture}
+  }}}
+  #2
+}
+\makeatother
+\makeatletter
+\newlength\vvec@height%
+\newlength\vvec@depth%
+\newlength\vvec@width%
+\newcommand{\vvec}[2][]{%
+  \ifmmode%
+    \settoheight{\vvec@height}{$#2$}%
+    \settodepth{\vvec@depth}{$#2$}%
+    \settowidth{\vvec@width}{$#2$}%
+  \else 
+    \settoheight{\vvec@height}{#2}%
+    \settodepth{\vvec@depth}{#2}%
+    \settowidth{\vvec@width}{#2}%
+  \fi%
+  \def\vvec@arg{#1}%
+  \def\vvec@dd{:}%
+  \def\vvec@d{.}%
+  \raisebox{.2ex}{\raisebox{\vvec@height}{\rlap{%
+    \kern.05em%
+    \begin{tikzpicture}[scale=1]
+    \pgfsetroundcap
+    \draw (.05em,0)--(\vvec@width-.05em,0);
+    \draw (\vvec@width-.05em,0)--(\vvec@width-.15em, .075em);
+    \draw (\vvec@width-.05em,0)--(\vvec@width-.15em,-.075em);
+    \ifx\vvec@arg\vvec@d%
+      \fill(\vvec@width*.45,.5ex) circle (.5pt);%
+    \else\ifx\vvec@arg\vvec@dd%
+      \fill(\vvec@width*.30,.5ex) circle (.5pt);%
+      \fill(\vvec@width*.65,.5ex) circle (.5pt);%
+    \fi\fi%
+    \end{tikzpicture}%
+  }}}%
+  #2%
+}
+\makeatother
+\def\ba{\begin{array}}
+\def\ea{\end{array}}
+\def\beann{\begin{eqnarray*}}
+\def\eeann{\end{eqnarray*}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\bsy{\boldsymbol}
+\def\gray#1{{\color{gray}#1}}
+\usepackage{titlesec}
+\usepackage{multirow}
+%To reference within text
+\usepackage{hyperref}
+\usepackage{apacite}
+\usepackage{lipsum}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{epigraph}
+\usepackage[title, titletoc]{appendix}
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+
+\titleformat{\chapter}{\normalfont\LARGE}{\thechapter\,$\vert$}{20pt}{\LARGE}{\setcounter{chapter}{0}}
+\setlength{\headheight}{15pt}
+\titlespacing*{\chapter}{0pt}{-70pt}{40pt} %Move chapter titles up
+% Title page logos:
+\makeatletter
+\newcommand\BackgroundPicturea[3]{
+	\setlength{\unitlength}{1pt}
+	\put(0,\strip@pt\paperheight){
+		\parbox[t]{\paperwidth}{
+			\vspace{#2}\hspace{#3}
+			\mbox{\includegraphics[scale=0.5]{#1}}
+}}}
+\newcommand\BackgroundPictureb[3]{
+	\setlength{\unitlength}{1pt}
+	\put(0,\strip@pt\paperheight){
+		\parbox[t]{\paperwidth}{
+			\vspace{#2}\hspace{#3}
+			\mbox{\includegraphics[scale=0.3]{#1}}
+}}}
+\makeatother
+% For my abbreviations
+\newcommand{\abbrlabel}[1]{\makebox[3cm][l]{\textbf{#1}\ \dotfill}}
+\newenvironment{abbreviations}{\begin{list}{}{\renewcommand{\makelabel}{\abbrlabel}}}{\end{list}}
+% Line Spacing
+\usepackage{setspace}
+\setstretch{1.5}
+%Set of command is for the changemargin environment
+\def\quote{\list{}{\rightmargin\leftmargin}\item[]}
+\let\endquote=\endlist 
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+%Replace Contents to Table of Contents	
+\addto\captionsenglish{
+	\renewcommand{\contentsname}%
+	{Table of Contents}
+	\setcounter{tocdepth}{3}% Include \subsubsection in ToC
+	\setcounter{secnumdepth}{3}% Number \subsubsection in ToC
+	}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
